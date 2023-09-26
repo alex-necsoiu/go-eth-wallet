@@ -19,13 +19,13 @@ import (
 	"fmt"
 	"time"
 
+	distributed "github.com/alex-necsoiu/go-eth-wallet/distributed"
 	"github.com/alex-necsoiu/go-eth-wallet/ecodec"
+	hd "github.com/alex-necsoiu/go-eth-wallet/hd"
+	nd "github.com/alex-necsoiu/go-eth-wallet/nd"
+	wtypes "github.com/alex-necsoiu/go-eth-wallet/wallet/types"
 	"github.com/google/uuid"
 	"github.com/pkg/errors"
-	distributed "github.com/wealdtech/go-eth2-wallet-distributed"
-	hd "github.com/wealdtech/go-eth2-wallet-hd/v2"
-	nd "github.com/wealdtech/go-eth2-wallet-nd/v2"
-	wtypes "github.com/wealdtech/go-eth2-wallet-types/v2"
 )
 
 const (
