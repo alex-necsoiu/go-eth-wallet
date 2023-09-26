@@ -20,10 +20,10 @@ import (
 	"fmt"
 	"strconv"
 
+	e2types "github.com/alex-necsoiu/go-eth-wallet/types"
+	e2wtypes "github.com/alex-necsoiu/go-eth-wallet/wallet/types"
 	"github.com/google/uuid"
 	"github.com/pkg/errors"
-	e2types "github.com/wealdtech/go-eth2-types/v2"
-	e2wtypes "github.com/wealdtech/go-eth2-wallet-types/v2"
 )
 
 type batchEntry struct {
