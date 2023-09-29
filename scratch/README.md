@@ -6,7 +6,6 @@
 - [Usage](#usage)
 - [Maintainers](#maintainers)
 - [Contribute](#contribute)
-- [License](#license)
 
 ## Install
 
@@ -18,7 +17,7 @@ go get github.com/alex-necsoiu/go-eth-wallet/scratch
 
 ## Usage
 
-In normal operation this module should not be used directly.  Instead, it should be configured to be used as part of [go-eth2-wallet](https://github.com/wealdtech/go-eth2-wallet).
+In normal operation this module should not be used directly.  Instead, it should be configured to be used as part of [go-eth2-wallet](https://github.com/alex-necsoiu/go-eth-wallet).
 
 The scratch store has no options.
 

@@ -1,0 +1,68 @@
+// Package scratch provides an in-memory store.  It is ephemeral, and should not be used where accounts are required to be stored.
+package scratch
+
+import (
+	"encoding/json"
+	"errors"
+
+	"github.com/google/uuid"
+)
+
+// StoreWallet stores wallet-level data.
+func (s *Store) StoreWallet(walletID uuid.UUID, _ string, data []byte) error {
+	s.walletMu.Lock()
+	s.wallets[walletID.String()] = data
+	if _, exists := s.accounts[walletID.String()]; !exists {
+		s.accountMu.Lock()
+		s.accounts[walletID.String()] = make(map[string][]byte)
+		s.accountMu.Unlock()
+	}
+	s.walletMu.Unlock()
+
+	return nil
+}
+
+// RetrieveWallet retrieves wallet-level data.  It will fail if it cannot retrieve the data.
+func (s *Store) RetrieveWallet(walletName string) ([]byte, error) {
+	for data := range s.RetrieveWallets() {
+		info := &struct {
+			Name string `json:"name"`
+		}{}
+		err := json.Unmarshal(data, info)
+		if err == nil && info.Name == walletName {
+			return data, nil
+		}
+	}
+
+	return nil, errors.New("wallet not found")
+}
+
+// RetrieveWalletByID retrieves wallet-level data.  It will fail if it cannot retrieve the data.
+func (s *Store) RetrieveWalletByID(walletID uuid.UUID) ([]byte, error) {
+	for data := range s.RetrieveWallets() {
+		info := &struct {
+			ID uuid.UUID `json:"uuid"`
+		}{}
+		err := json.Unmarshal(data, info)
+		if err == nil && info.ID == walletID {
+			return data, nil
+		}
+	}
+
+	return nil, errors.New("wallet not found")
+}
+
+// RetrieveWallets retrieves wallet-level data for all wallets.
+func (s *Store) RetrieveWallets() <-chan []byte {
+	ch := make(chan []byte, 1024)
+	go func() {
+		s.walletMu.RLock()
+		for _, data := range s.wallets {
+			ch <- data
+		}
+		close(ch)
+		s.walletMu.RUnlock()
+	}()
+
+	return ch
+}

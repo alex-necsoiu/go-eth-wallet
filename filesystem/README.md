@@ -9,7 +9,6 @@ Filesystem-based store for the [Ethereum 2 wallet](https://github.com/alex-necso
 - [Usage](#usage)
 - [Maintainers](#maintainers)
 - [Contribute](#contribute)
-- [License](#license)
 
 ## Install
 

@@ -112,7 +112,7 @@ func main() {
 
 ## Maintainers
 
-Alex Necsoiu: [@mcdee](https://github.com/alex-necsoiu).
+Alex Necsoiu: [@alex-necsoiu](https://github.com/alex-necsoiu).
 
 ## Contribute
 
