@@ -213,7 +213,7 @@ func main() {
 
 ## Maintainers
 
-Jim McDonald: [@alex-necsoiu](https://github.com/alex-necsoiu).
+Alex Necsoiu: [@alex-necsoiu](https://github.com/alex-necsoiu).
 
 ## Contribute
 
