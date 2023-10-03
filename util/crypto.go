@@ -18,7 +18,7 @@ func _bigInt(input string) *big.Int {
 	return result
 }
 
-//nolint:gochecknoglobals
+//nolint:gochecknoglobals //TODO: check this
 var r = _bigInt("52435875175126190479447740508185965837690552500527637822603658699938581184513")
 
 // 48 comes from ceil((1.5 * ceil(log2(r))) / 8).
